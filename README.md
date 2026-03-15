@@ -1,6 +1,6 @@
 # Threejs-mcp
 
-A Three.js code-generation MCP server
+A Three.js code-generation MCP server.
 
 ## Tools
 
