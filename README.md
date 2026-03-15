@@ -31,12 +31,26 @@ A Three.js code-generation [MCP server](https://modelcontextprotocol.io/). Each 
 
 ## Installation
 
-Clone this repository, then follow the instructions for your MCP client below. Replace `/path/to/threejs-mcp` with the actual path to the cloned repo.
+Clone this repository, then update the path in `run.sh` to point to the cloned directory:
+
+```bash
+#!/bin/zsh
+source ~/.zshrc
+exec uv run --directory /path/to/threejs-mcp threejs-mcp
+```
+
+Make the script executable:
+
+```bash
+chmod +x run.sh
+```
+
+Then follow the instructions for your MCP client below. Replace `/path/to/threejs-mcp/run.sh` with the actual path to the script.
 
 ### Claude Code
 
 ```bash
-claude mcp add threejs -s user -- uv run --directory /path/to/threejs-mcp server.py
+claude mcp add threejs -s user -- /path/to/threejs-mcp/run.sh
 ```
 
 The scope (`-s`) can be `user`, `project`, or `local`.
@@ -49,8 +63,7 @@ Open **Settings > Developer > Edit Config** and add to `claude_desktop_config.js
 {
   "mcpServers": {
     "threejs": {
-      "command": "uv",
-      "args": ["run", "--directory", "/path/to/threejs-mcp", "server.py"]
+      "command": "/path/to/threejs-mcp/run.sh"
     }
   }
 }
@@ -64,8 +77,7 @@ Open **Settings > MCP > Add new global MCP server** and add to `~/.cursor/mcp.js
 {
   "mcpServers": {
     "threejs": {
-      "command": "uv",
-      "args": ["run", "--directory", "/path/to/threejs-mcp", "server.py"]
+      "command": "/path/to/threejs-mcp/run.sh"
     }
   }
 }
@@ -81,8 +93,7 @@ Open **Settings > MCP > Add Server > Add custom server** and add to your MCP con
 {
   "mcpServers": {
     "threejs": {
-      "command": "uv",
-      "args": ["run", "--directory", "/path/to/threejs-mcp", "server.py"]
+      "command": "/path/to/threejs-mcp/run.sh"
     }
   }
 }
@@ -97,8 +108,7 @@ Add to your user or workspace `settings.json`:
   "mcp": {
     "servers": {
       "threejs": {
-        "command": "uv",
-        "args": ["run", "--directory", "/path/to/threejs-mcp", "server.py"]
+        "command": "/path/to/threejs-mcp/run.sh"
       }
     }
   }
@@ -111,8 +121,7 @@ Or create `.vscode/mcp.json` in your project root:
 {
   "servers": {
     "threejs": {
-      "command": "uv",
-      "args": ["run", "--directory", "/path/to/threejs-mcp", "server.py"]
+      "command": "/path/to/threejs-mcp/run.sh"
     }
   }
 }
@@ -127,8 +136,7 @@ Add to your Zed settings (`~/.config/zed/settings.json`):
   "context_servers": {
     "threejs": {
       "command": {
-        "path": "uv",
-        "args": ["run", "--directory", "/path/to/threejs-mcp", "server.py"]
+        "path": "/path/to/threejs-mcp/run.sh"
       }
     }
   }
@@ -143,8 +151,7 @@ Open **Settings > MCP Servers > Edit MCP Settings** and add to the config:
 {
   "mcpServers": {
     "threejs": {
-      "command": "uv",
-      "args": ["run", "--directory", "/path/to/threejs-mcp", "server.py"]
+      "command": "/path/to/threejs-mcp/run.sh"
     }
   }
 }
@@ -157,12 +164,7 @@ Add to your `~/.continue/config.yaml`:
 ```yaml
 mcpServers:
   - name: threejs
-    command: uv
-    args:
-      - run
-      - --directory
-      - /path/to/threejs-mcp
-      - server.py
+    command: /path/to/threejs-mcp/run.sh
 ```
 
 ### Roo Code
@@ -173,8 +175,7 @@ Open **Settings > MCP > Edit MCP Settings** and add:
 {
   "mcpServers": {
     "threejs": {
-      "command": "uv",
-      "args": ["run", "--directory", "/path/to/threejs-mcp", "server.py"]
+      "command": "/path/to/threejs-mcp/run.sh"
     }
   }
 }
@@ -185,7 +186,7 @@ Open **Settings > MCP > Edit MCP Settings** and add:
 This is a standard stdio MCP server. Run it with:
 
 ```bash
-uv run --directory /path/to/threejs-mcp server.py
+/path/to/threejs-mcp/run.sh
 ```
 
 ## Scraping docs
