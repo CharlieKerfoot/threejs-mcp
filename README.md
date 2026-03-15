@@ -1,6 +1,6 @@
-# threejs-mcp
+# Threejs-mcp
 
-A Three.js code-generation [MCP server](https://modelcontextprotocol.io/). Each tool encodes Three.js API knowledge directly and returns ready-to-use JavaScript — no manual boilerplate needed.
+A Three.js code-generation MCP server.
 
 ## Tools
 
